@@ -1,14 +1,17 @@
-import { View } from "react-native";
-import HomeScreen from "./pages/HomeScreen";
+import { StatusBar } from "react-native";
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import CategoriesScreen from "./screens/CategoriesScreen";
+
+const stack = createNativeStackNavigator();
 
 export default function RootLayout() {
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
-      <HomeScreen />
-    </View>
+    <>
+      <StatusBar barStyle="dark-content" />
+      <stack.Navigator>
+        <stack.Screen name="Categories" component={CategoriesScreen} />
+      </stack.Navigator>
+    </>
   );
 }
