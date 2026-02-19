@@ -1,7 +1,8 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "react-native";
 
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CategoriesScreen from "./screens/CategoriesScreen";
+import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 
 const stack = createNativeStackNavigator();
 
@@ -11,6 +12,7 @@ export default function RootLayout() {
       <StatusBar barStyle="dark-content" />
       <stack.Navigator>
         <stack.Screen name="Categories" component={CategoriesScreen} />
+        <stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
       </stack.Navigator>
     </>
   );
