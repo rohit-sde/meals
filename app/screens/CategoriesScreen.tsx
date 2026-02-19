@@ -6,7 +6,7 @@ import { FlatList } from "react-native";
 export default function CategoriesScreen({ navigation }: any) {
   function renderCategoryItem(itemData: any) {
     function pressHandler() {
-      navigation.navigate("MealsOverview");
+      navigation.navigate("MealsOverview", { categoryId: itemData.item.id });
       console.log("pressed");
     }
     return (
