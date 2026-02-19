@@ -10,8 +10,27 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <stack.Navigator>
-        <stack.Screen name="Categories" component={CategoriesScreen} />
+      <stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#4a148c",
+          },
+          headerTintColor: "white",
+          contentStyle: {
+            backgroundColor: "#774aad",
+          },
+        }}
+      >
+        <stack.Screen
+          name="Categories"
+          component={CategoriesScreen}
+          options={{
+            title: "All Categories",
+            headerStyle: { backgroundColor: "#4a148c" },
+            headerTintColor: "white",
+            contentStyle: { backgroundColor: "#774aad" },
+          }}
+        />
         <stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
       </stack.Navigator>
     </>
