@@ -8,6 +8,7 @@ import {
     Text,
     View,
 } from "react-native";
+import MealDetails from "./MealDetails";
 
 type NavigationProp = NativeStackNavigationProp<any, "MealDetail">;
 
@@ -45,11 +46,11 @@ export default function MealItems({
             <Image style={styles.image} source={{ uri: imageUrl }} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <View style={styles.details}>
-            <Text style={styles.detailText}>{duration} min</Text>
-            <Text style={styles.detailText}>{complexity}</Text>
-            <Text style={styles.detailText}>{affordability}</Text>
-          </View>
+          <MealDetails
+            duration={duration}
+            complexity={complexity}
+            affordability={affordability}
+          />
         </View>
       </Pressable>
     </View>
@@ -75,15 +76,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     margin: 8,
-  },
-  details: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 8,
-  },
-  detailText: {
-    marginHorizontal: 4,
-    fontSize: 14,
   },
   buttonPressed: {
     opacity: 0.5,
