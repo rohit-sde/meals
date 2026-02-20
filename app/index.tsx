@@ -5,31 +5,34 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import MealDetailScreen from "./screens/MealDetailScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
+import FavouriteContextProvider from "./store/favourites-context";
 
 const stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
   return (
-    <Drawer.Navigator screenOptions={{
-      headerStyle: {
-        backgroundColor: "#4a148c",
-      },
-      headerTintColor: "white",
-      drawerContentStyle: {
-        backgroundColor: "#774aad",
-      }, sceneStyle: {
-        backgroundColor: "#4a148c",
-      },
-      drawerInactiveTintColor: "white",
-      drawerActiveTintColor: "#ffffffff",
-      drawerActiveBackgroundColor: "#4a148c",
-    }}>
-      <Drawer.Screen name="Categories" component={CategoriesScreen} options={{
-        title: "All Categories",
-      }} />
-      <Drawer.Screen name="Favorites" component={FavoritesScreen} />
-    </Drawer.Navigator>
+    <FavouriteContextProvider>
+      <Drawer.Navigator screenOptions={{
+        headerStyle: {
+          backgroundColor: "#4a148c",
+        },
+        headerTintColor: "white",
+        drawerContentStyle: {
+          backgroundColor: "#774aad",
+        }, sceneStyle: {
+          backgroundColor: "#4a148c",
+        },
+        drawerInactiveTintColor: "white",
+        drawerActiveTintColor: "#ffffffff",
+        drawerActiveBackgroundColor: "#4a148c",
+      }}>
+        <Drawer.Screen name="Categories" component={CategoriesScreen} options={{
+          title: "All Categories",
+        }} />
+        <Drawer.Screen name="Favorites" component={FavoritesScreen} />
+      </Drawer.Navigator>
+    </FavouriteContextProvider>
   )
 }
 
