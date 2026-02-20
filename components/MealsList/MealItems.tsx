@@ -1,14 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import {
-    Image,
-    Platform,
-    Pressable,
-    StyleSheet,
-    Text,
-    View,
+  Image,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
-import MealDetails from "./MealDetails";
+import MealDetails from "../MealDetails";
 
 type NavigationProp = NativeStackNavigationProp<any, "MealDetail">;
 
@@ -23,7 +23,8 @@ export default function MealItems({
   id: string;
   title: string;
   imageUrl: string;
-  duration: number;
+  duration: number; ch
+
   complexity: string;
   affordability: string;
 }) {

@@ -9,18 +9,18 @@ export const FavouriteContext = createContext({
 export default function FavouriteContextProvider({ children }: { children: React.ReactNode }) {
     const [favouriteMealIds, setFavouriteMealIds] = useState<string[]>([])
 
-    function addFavorite(id: string) {
+    function addFavourite(id: string) {
         setFavouriteMealIds((prevIds) => [...prevIds, id])
     }
 
-    function removeFavorite(id: string) {
+    function removeFavourite(id: string) {
         setFavouriteMealIds((prevIds) => prevIds.filter((mealId) => mealId !== id))
     }
     return (
         <FavouriteContext.Provider value={{
             ids: favouriteMealIds,
-            addFavourite: addFavorite,
-            removeFavourite: removeFavorite,
+            addFavourite: addFavourite,
+            removeFavourite: removeFavourite,
         }}>
             {children}
         </FavouriteContext.Provider>

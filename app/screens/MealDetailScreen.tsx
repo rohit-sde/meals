@@ -3,29 +3,39 @@ import List from "@/components/MealDetail/List";
 import Subtitle from "@/components/MealDetail/Subtitle";
 import MealDetails from "@/components/MealDetails";
 import { MEALS } from "@/data/dummy-data";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FavouriteContext } from "../store/favourites-context";
 
 export default function MealDetailScreen({ route, navigation }: any) {
   const mealId = route.params.mealId;
+  const { ids, addFavourite, removeFavourite } = useContext(FavouriteContext);
+
+  const isFavourite = ids.includes(mealId);
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-  function headerButtonPressHandler() {}
+  function changeFavouriteStatusHandler() {
+    if (isFavourite) {
+      removeFavourite(mealId);
+    } else {
+      addFavourite(mealId);
+    }
+  }
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
         return (
           <IconButton
-            icon="star"
+            icon={isFavourite ? "star" : "star-outline"}
             color="white"
-            onPress={headerButtonPressHandler}
+            onPress={changeFavouriteStatusHandler}
           />
         );
       },
     });
-  }, []);
+  }, [isFavourite]);
 
   return (
     <ScrollView style={styles.rootContainer}>
