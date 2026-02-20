@@ -1,10 +1,37 @@
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import CategoriesScreen from "./screens/CategoriesScreen";
+import FavoritesScreen from "./screens/FavoritesScreen";
 import MealDetailScreen from "./screens/MealDetailScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 
 const stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: "#4a148c",
+      },
+      headerTintColor: "white",
+      drawerContentStyle: {
+        backgroundColor: "#774aad",
+      }, sceneStyle: {
+        backgroundColor: "#4a148c",
+      },
+      drawerInactiveTintColor: "white",
+      drawerActiveTintColor: "#ffffffff",
+      drawerActiveBackgroundColor: "#4a148c",
+    }}>
+      <Drawer.Screen name="Categories" component={CategoriesScreen} options={{
+        title: "All Categories",
+      }} />
+      <Drawer.Screen name="Favorites" component={FavoritesScreen} />
+    </Drawer.Navigator>
+  )
+}
 
 export default function RootIndex() {
   return (
@@ -21,13 +48,10 @@ export default function RootIndex() {
         }}
       >
         <stack.Screen
-          name="Categories"
-          component={CategoriesScreen}
+          name="CategorieDrawer"
+          component={DrawerNavigator}
           options={{
-            title: "All Categories",
-            headerStyle: { backgroundColor: "#4a148c" },
-            headerTintColor: "white",
-            contentStyle: { backgroundColor: "#774aad" },
+            headerShown: false,
           }}
         />
         <stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
