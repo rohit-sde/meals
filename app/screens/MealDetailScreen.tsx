@@ -1,6 +1,8 @@
+import List from "@/components/MealDetail/List";
+import Subtitle from "@/components/MealDetail/Subtitle";
 import MealDetails from "@/components/MealDetails";
 import { MEALS } from "@/data/dummy-data";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function MealDetailScreen({ route, navigation }: any) {
   const mealId = route.params.mealId;
@@ -8,7 +10,7 @@ export default function MealDetailScreen({ route, navigation }: any) {
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
   return (
-    <View>
+    <ScrollView style={styles.rootContainer}>
       <Image style={styles.image} source={{ uri: selectedMeal?.imageUrl }} />
       <Text style={styles.title}>{selectedMeal?.title}</Text>
       <MealDetails
@@ -16,25 +18,22 @@ export default function MealDetailScreen({ route, navigation }: any) {
         complexity={selectedMeal?.complexity}
         affordability={selectedMeal?.affordability}
       />
-      <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>Ingredients</Text>
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <Subtitle>Ingredients</Subtitle>
+          <List valuesArray={selectedMeal?.ingredients} />
+          <Subtitle>Steps</Subtitle>
+          <List valuesArray={selectedMeal?.steps} />
+        </View>
       </View>
-      {selectedMeal?.ingredients.map((ingredient: string) => (
-        <Text key={ingredient} style={styles.detailText}>
-          {ingredient}
-        </Text>
-      ))}
-      <Text style={styles.subtitle}>Steps</Text>
-      {selectedMeal?.steps.map((step: string) => (
-        <Text key={step} style={styles.detailText}>
-          {step}
-        </Text>
-      ))}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    marginBottom: 24,
+  },
   image: {
     width: "100%",
     height: 350,
@@ -46,19 +45,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
   },
-  detailText: {
-    color: "white",
+  listOuterContainer: {
+    alignItems: "center",
   },
-  subtitle: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  subtitleContainer: {
-    padding: 6,
-    borderBottomColor: "white",
-    borderBottomWidth: 2,
-    margin: 4,
+  listContainer: {
+    width: "80%",
   },
 });
