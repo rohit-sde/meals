@@ -2,7 +2,7 @@ import MealsList from "@/components/MealsList/MealsList";
 import { MEALS } from "@/data/dummy-data";
 import { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { FavouriteContext } from "../store/favourites-context";
+import { FavouriteContext } from "../store/Context/favourites-context";
 
 export default function FavoritesScreen() {
     const { ids } = useContext(FavouriteContext);

@@ -5,7 +5,7 @@ import MealDetails from "@/components/MealDetails";
 import { MEALS } from "@/data/dummy-data";
 import { useContext, useLayoutEffect } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
-import { FavouriteContext } from "../store/favourites-context";
+import { FavouriteContext } from "../store/Context/favourites-context";
 
 export default function MealDetailScreen({ route, navigation }: any) {
   const mealId = route.params.mealId;

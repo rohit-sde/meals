@@ -23,7 +23,7 @@ export default function MealItems({
   id: string;
   title: string;
   imageUrl: string;
-  duration: number; ch
+  duration: number;
 
   complexity: string;
   affordability: string;
